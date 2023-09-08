@@ -34,6 +34,8 @@ address = keccak256( 0xff + sender_address + salt + keccak256(init_code))[12:]
 2. 使用上面的公式计算新合约的地址。
 3. 之后的步骤同`CREATE`指令：初始化新的EVM上下文、执行`initcode`、更新创建的账户状态、返回新合约地址或`0`（如果失败）。
 
+CREATE2的操作码为0xF5，gas消耗包括32000的固定gas和内存扩展成本
+
 下面，我们在极简EVM中实现`CREATE2`指令：
 
 ```python
